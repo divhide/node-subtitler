@@ -1,0 +1,42 @@
+{
+  "name": "opensubtitles-client",
+  "preferGlobal": false,
+  "version": "0.0.1",
+  "author": "Oscar Brito <aetheon@gmail.com>",
+  "description": "a simple zero-configuration command-line http server",
+  "contributors": [
+    "Oscar Brito <aetheon@gmail.com>"
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "opensubtitles",
+    "client",
+    "subtitle",
+    "movie"
+  ],
+  "dependencies": {
+    "request": ">2",
+    "xml-mapping": ">1.2",
+    "mustache": ">0.7",
+    "Deferred": ">0.1",
+    "argparser": ">0.2"
+  },
+  "analyze": false,
+  "devDependencies": {
+    "node-inspector": "0.2"
+  },
+  "license": "BSD",
+  "engines": {
+    "node": ">=0.10.12"
+  },
+  "scripts": {
+    "preinstall": "node scripts/pre-install.js"
+  },
+  "bin": {
+    "subtitler": "bin/subtitler.bin.js"
+  }
+}

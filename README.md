@@ -15,6 +15,16 @@ npm install opensubtitles-client -g
 subtitler <file> -lang eng|pob|... -n numberOfSubtitlesToDownload
 ```
 
+Check the languages table on <a href="https://github.com/aetheon/node-opensubtitles-client/blob/master/langs.dump.txt">here/</a>. Examples:
+
+```js
+-lang por //Portuguese
+-lang pob //Brazilian
+-lang eng //English
+-lang fre //French
+-lang spa //Spanish
+```
+
 Download subtitles for a file, automatically naming the subtitle file to be the 
 same as the movie.
 
@@ -83,5 +93,6 @@ opensubtitles.api.on("error", functions(e){});
 opensubtitles.downloader.on("downloading", function(info){});
 opensubtitles.downloader.on("downloaded", function(info){});
 ```
+
 
 

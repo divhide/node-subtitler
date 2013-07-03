@@ -15,7 +15,7 @@ npm install opensubtitles-client -g
 subtitler <file> -lang eng|pob|... -n numberOfSubtitlesToDownload
 ```
 
-Check the languages table on <a href="https://github.com/aetheon/node-opensubtitles-client/blob/master/langs.dump.txt">here/</a>. Examples:
+Check the languages table on <a href="https://github.com/aetheon/node-opensubtitles-client/blob/master/langs.dump.txt">here</a>. Examples:
 
 ```js
 -lang por //Portuguese

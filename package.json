@@ -3,7 +3,7 @@
   "preferGlobal": false,
   "version": "0.0.1",
   "author": "Oscar Brito <aetheon@gmail.com>",
-  "description": "a simple zero-configuration command-line http server",
+  "description": "opensubtitles API & command line subtitles downloader",
   "contributors": [
     "Oscar Brito <aetheon@gmail.com>"
   ],

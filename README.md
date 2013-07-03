@@ -1,5 +1,5 @@
 
-# Node.js NPM Opensubtitles package
+# NPM Opensubtitles package
 
 ## Install
 

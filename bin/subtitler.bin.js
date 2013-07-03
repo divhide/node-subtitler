@@ -17,7 +17,7 @@ var ap = require('argparser')
             })
             .err(function(e) {
                console.log(e);
-               console.error("[usage]\n\t", "subtitler", "<file|query> --lang eng|pob|... --n numberOfSubtitles --download");
+               console.error("[usage]\n\t", "subtitler", "<file|query> -lang eng|pob|... --n numberOfSubtitles --download");
                process.exit(0);
              })
             .parse();
@@ -67,6 +67,16 @@ APP.prototype = {
  
         });
 
+      opensubtitles.api.on(
+        "error",
+        function(e){
+
+          (function(){
+              this.onError(e);
+          }).call(scope);
+ 
+        });
+
       // Event onDownloaded
       opensubtitles.downloader.on(
           "downloaded",
@@ -103,7 +113,7 @@ APP.prototype = {
     }
 
     if( this.download ) {
-      
+
        // download subtitles
        opensubtitles.downloader.download(
                         results, 

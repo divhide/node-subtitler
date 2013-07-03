@@ -1,5 +1,13 @@
 var opensubtitles = require("../index.js");
 
+opensubtitles.api.on("login", function(token){
+    console.log("login:" + token);
+});
+
+opensubtitles.api.on("search", function(results){
+    console.log("results:" + results);
+});
+
 opensubtitles.api.login()
     .done(
         function(token){
@@ -8,7 +16,7 @@ opensubtitles.api.login()
             opensubtitles.api.searchForFile(token, "eng", file).done(
                 function(results){
                     
-                    opensubtitles.download(file, results, 1, null);
+                    opensubtitles.downloader.download(file, results, 1, null);
                     
                     opensubtitles.api.logout(token);
                 }

@@ -1,7 +1,7 @@
 
 module.exports = {
     api: require("./lib/API.js"),
-    download: require("./lib/Downloader.js"),
-    getMovieHash: require("./lib/Hasher.js"),
+    downloader: new require("./lib/Downloader.js"),
+    hash: require("./lib/Hasher.js"),
 }
 

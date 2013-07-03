@@ -3,6 +3,11 @@
 
 ## Install
 
+After have installed node.js, run the following:
+
+```shell
+npm install opensubtitles-client -g
+```
 
 ## Command line
 
@@ -17,7 +22,7 @@ same as the movie.
 subtitler Cars.avi -lang eng
 ``` 
 
-Search for subtiles (limit 5):
+Search for subtitles (limit 5):
 
 ```shell
 subtitler Cars -lang eng -n 5
@@ -77,8 +82,6 @@ opensubtitles.api.on("error", functions(e){});
 
 opensubtitles.downloader.on("downloading", function(info){});
 opensubtitles.downloader.on("downloaded", function(info){});
-
-
 ```
 
 

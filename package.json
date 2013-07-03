@@ -10,7 +10,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/aetheon/node-opensubtitles-client.git"
   },
   "keywords": [
     "opensubtitles",

@@ -1,6 +1,10 @@
 
 # NPM Opensubtitles package
 
+<iframe style="border: 0; margin: 0; padding: 0;"
+        src="https://www.gittip.com/aetheon/widget.html"
+        width="48pt" height="22pt"></iframe>
+
 ## Install
 
 After have installed node.js, run the following:

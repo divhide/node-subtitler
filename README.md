@@ -95,4 +95,12 @@ opensubtitles.downloader.on("downloaded", function(info){});
 ```
 
 
+Checkout my blogpost on:
+<a href="http://blog.divhide.com/2013/07/is-downloading-subtitles-painfull.html">http://blog.divhide.com/2013/07/is-downloading-subtitles-painfull.html</a>
+
+<small>
+<p>Visit <a href="http://site.divhide.com">www.divhide.com</a> for more informations, contacts and news about Web Development.</p>
+
+<p>See other blog posts at <a href="http://blog.divhide.com">blog.divhide.com</a>.</p>
+</small>
 

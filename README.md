@@ -96,6 +96,21 @@ opensubtitles.downloader.on("downloading", function(info){});
 opensubtitles.downloader.on("downloaded", function(info){});
 ```
 
+## Integration with rtorrent
+
+After rtorrent download is finish you can automatically use subtitler to download it's subtitles. You just have to 
+do the following:
+
+On .rtorrent.rc add:
+
+```
+system.method.set_key =event.download.finished,move_complete,"execute=subtitler,$d.get_base_path="
+```
+
+This way the _subtitler_ command will receive the downloaded path has argument and will try to download the subtitles.
+
+
+
 
 Checkout my blogpost on:
 <a href="http://blog.divhide.com/2013/07/is-downloading-subtitles-painfull.html">http://blog.divhide.com/2013/07/is-downloading-subtitles-painfull.html</a>

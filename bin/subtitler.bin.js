@@ -17,7 +17,6 @@ var ap = require('argparser')
             })
             .err(function(e) {
                console.log(e);
-               console.error("[usage]\n\t", "subtitler", "<file|query> -lang eng|pob|... --n numberOfSubtitles --download");
                process.exit(0);
              })
             .parse();
@@ -57,6 +56,27 @@ APP.prototype = {
 
       var scope = this;
 
+
+      opensubtitles.api.on(
+        "beforeLogin",
+        function(token){
+
+          (function(){
+              this.onBeforeLogin();
+          }).call(scope);
+ 
+        });
+      
+      opensubtitles.api.on(
+        "login",
+        function(token){
+
+          (function(){
+              this.onLogin(token);
+          }).call(scope);
+ 
+        });
+
       opensubtitles.api.on(
         "search",
         function(results){
@@ -88,7 +108,7 @@ APP.prototype = {
              
           });
 
-      // Event onDownloaded
+      // Event onDownloading
       opensubtitles.downloader.on(
           "downloading",
           function(data){
@@ -101,15 +121,25 @@ APP.prototype = {
 
   },
 
+  onBeforeLogin: function(token){
+    console.log("Trying to login into opensubtitles API...");
+  },
+
+  onLogin: function(token){
+    console.log("opensubtitles API Login with token", token);
+  },
 
   onSearch: function(){
 
-    console.log("Search results", this.n, "of #", results.length);
-           
+    console.log("Search results found #", results.length);
+    console.log("------------------------");
+
     for(var i=0; (i<this.n && i<results.length); i++){
        var sub = results[i];
+       console.log(sub.SubAddDate);
+       console.log(sub.MovieReleaseName);
+       console.log(sub.SubDownloadLink);
        console.log("------------------------");
-       console.log(sub.SubAddDate, " ", sub.MovieReleaseName);
     }
 
     if( this.download ) {
@@ -118,7 +148,11 @@ APP.prototype = {
        opensubtitles.downloader.download(
                         results, 
                         this.n,
-                        this.isFile ? this.text : null
+                        this.isFile ? this.text : null,
+                        function(){
+                          opensubtitles.api.logout(this.logintoken);
+                          process.exit();
+                        }
                     );
     }
 
@@ -134,9 +168,7 @@ APP.prototype = {
 
      console.log("...Downloaded ", data.url, " -> ", data.file);
      console.log("------------------------");
-             
-     opensubtitles.api.logout(this.logintoken);
-
+     
   },
 
   onError: function(e){
@@ -148,17 +180,20 @@ APP.prototype = {
 
   run: function(){
 
+    if(!this.text){
+      console.log("\nSUBTITLER USAGE:\n");
+      console.log("\tsubtitler", "<file|query> -lang eng|pob|... --n numberOfSubtitles --download\n");
+      return;
+    }
+
     var scope = this;
     opensubtitles.api.login()
     .done(
         function(logintoken){
-            
             (function(){
               
               this.logintoken = logintoken;
-            
-              console.log("Searching...");
-          
+              
               if(this.isFile)
                   opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
               else
@@ -174,7 +209,6 @@ APP.prototype = {
   }
 
 };
-
 
 
 new APP().run();

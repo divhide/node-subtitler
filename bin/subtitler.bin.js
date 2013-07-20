@@ -2,7 +2,8 @@
 
 var _ = require('lodash'),
     opensubtitles = require("../index.js"),
-    fs = require("fs");
+    fs = require("fs"),
+    Utils = require('../lib/Utils');;
 
 
 /*
@@ -36,12 +37,16 @@ APP = function(apObject){
   this.n = ap.opt("n");
   this.download = ap.opt("download");
   this.isFile = false;
+  this.isDirectory = false;
 
   //If is search or file?
   var file = null;
-  if( fs.existsSync(this.text) ) { 
+  if( fs.existsSync(this.text) ) {
+
+      var stats = fs.statSync(this.text); 
       this.download = true;
-      this.isFile = true;
+      this.isFile = true; //even if is a directory it's a file!
+      this.isDirectory = stats.isDirectory();
   }
 
   this.bindOpensubtitlesEvents();
@@ -136,9 +141,12 @@ APP.prototype = {
 
     for(var i=0; (i<this.n && i<results.length); i++){
        var sub = results[i];
-       console.log(sub.SubAddDate);
-       console.log(sub.MovieReleaseName);
-       console.log(sub.SubDownloadLink);
+       console.log("Date\t\t", sub.SubAddDate);
+       console.log("Language\t", sub.SubLanguageID, sub.LanguageName);
+       console.log("Movie\t\t", sub.MovieReleaseName);
+       console.log("Subtitle\t", sub.SubFileName);
+       console.log("Download\t", sub.SubDownloadLink);
+       
        console.log("------------------------");
     }
 
@@ -182,7 +190,7 @@ APP.prototype = {
 
     if(!this.text){
       console.log("\nSUBTITLER USAGE:\n");
-      console.log("\tsubtitler", "<file|query> -lang eng|pob|... --n numberOfSubtitles --download\n");
+      console.log("\tsubtitler", "<file|query> -lang eng|pob|... -n numberOfSubtitles --download\n");
       return;
     }
 
@@ -193,9 +201,19 @@ APP.prototype = {
             (function(){
               
               this.logintoken = logintoken;
-              
+
+              if(this.isDirectory) {
+                  // get the biggest file in the directory (might be the movie file)
+                  this.text = Utils.getBiggestFile(this.text);
+
+                  console.log("Searching subtitles for file:", this.text);
+              }
+
               if(this.isFile)
                   opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
+              else if(this.isDirectory) {
+                  opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
+              }
               else
                   opensubtitles.api.search(logintoken, this.lang, this.text);
 

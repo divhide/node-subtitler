@@ -14,7 +14,7 @@ npm install opensubtitles-client -g
 ## Command line
 
 ```shell
-subtitler <file> -lang eng|pob|... -n numberOfSubtitlesToDownload
+subtitler <file|directory|seachText> -lang eng|pob|... -n numberOfSubtitlesToDownload --download
 ```
 
 Check the languages table on <a href="https://github.com/aetheon/node-opensubtitles-client/blob/master/langs.dump.txt">here</a>. Examples:
@@ -37,7 +37,7 @@ subtitler Cars.avi -lang eng
 Search for subtitles (limit 5):
 
 ```shell
-subtitler Cars -lang eng -n 5
+subtitler Cars -lang eng --n 5
 ``` 
 
 Search and download to the current directory the first 5 subtitles:

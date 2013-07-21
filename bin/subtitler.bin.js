@@ -9,12 +9,15 @@ var _ = require('lodash'),
 /*
  * Parse Arguments
  *
+ * --lang <str> -n <int> --retries <int> --retryIn <sec> --download
  */
 var ap = require('argparser')
             .nonvals("download")
             .defaults({
                lang : "eng",
-               n: 1
+               n: 1,
+               retries: 3,
+               retryIn: 5,
             })
             .err(function(e) {
                console.log(e);
@@ -36,6 +39,8 @@ APP = function(apObject){
   this.lang = ap.opt("lang");
   this.n = ap.opt("n");
   this.download = ap.opt("download");
+  this.retries = ap.opt("retries");
+  this.retryIn = ap.opt("retryIn");
   this.isFile = false;
   this.isDirectory = false;
 
@@ -181,8 +186,28 @@ APP.prototype = {
 
   onError: function(e){
     
-    console.log("Oops. An error has occurred. Please try again...");
-    process.exit();
+    
+    if(--this.retries<=0){
+      console.log("Oops. An error has occurred. Please try again...");  
+      process.exit();
+    }else{
+      console.log("Oops. An error has occurred. Retrying in", this.retryIn, "seconds");
+      var scope = this;
+      setTimeout(
+        function(){
+          
+          (function(){
+            this.run();
+          }).call(scope);
+
+        },
+        (this.retryIn * 1000)
+      );
+
+    }
+
+
+    
 
   },
 

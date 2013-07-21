@@ -14,8 +14,21 @@ npm install opensubtitles-client -g
 ## Command line
 
 ```shell
-subtitler <file|directory|seachText> -lang eng|pob|... -n numberOfSubtitlesToDownload --download
+subtitler <file|directory|seachText> --lang eng|pob|... -n <numberOfSubtitlesToDownload> --download --retries <numberOfRetries> --retryIn <secondsToRetry>
 ```
+> ARGUMENT - if is a file or directory --download is activated by default
+
+> ARGUMENT - if is free text performs a query into opensubtitles with it! 
+
+> --lang The language to search ( be sure to check <a href="https://github.com/aetheon/node-opensubtitles-client/blob/master/langs.dump.txt">here</a> )
+
+> -n specifies the number of subtitles to list or download if (--download is specified)
+
+> --download Flag to download the results
+
+> --retries The number of retries in API error
+
+> --retryIn The seconds to wait before the next retry
 
 Check the languages table on <a href="https://github.com/aetheon/node-opensubtitles-client/blob/master/langs.dump.txt">here</a>. Examples:
 

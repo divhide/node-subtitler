@@ -24,7 +24,7 @@ subtitler <file|directory|seachText> --lang eng|pob|... -n <numberOfSubtitlesToD
 
 > -n specifies the number of subtitles to list or download if (--download is specified)
 
-> --download Flag to download the results
+> --download Flag to download the results. The downloaded result will have the same same as the file if it can, working well with TV players, etc...
 
 > --retries The number of retries in API error
 
@@ -126,7 +126,10 @@ This way the _subtitler_ command will receive the downloaded path has argument a
 
 
 Checkout my blogpost on:
-<a href="http://blog.divhide.com/2013/07/is-downloading-subtitles-painfull.html">http://blog.divhide.com/2013/07/is-downloading-subtitles-painfull.html</a>
+
+<a href="http://blog.divhide.com/2013/07/is-downloading-subtitles-painfull.html">Why this package was created!</a>
+
+<a href="http://blog.divhide.com/2013/07/opensubtitles-client-nodejs-javascript.html">Integration with Rtorrent</a>
 
 <small>
 <p>Visit <a href="http://site.divhide.com">www.divhide.com</a> for more informations, contacts and news about Web Development.</p>

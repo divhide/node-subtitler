@@ -215,7 +215,7 @@ APP.prototype = {
 
     if(!this.text){
       console.log("\nSUBTITLER USAGE:\n");
-      console.log("\tsubtitler", "<file|query> -lang eng|pob|... -n numberOfSubtitles --download\n");
+      console.log("\tsubtitler", "<file|query> --lang eng|pob|... -n numberOfSubtitles --download --retries <numberOfRetries> --retryIn <secondsToRetry>\n");
       return;
     }
 

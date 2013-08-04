@@ -20,12 +20,12 @@
     "rtorrent"
   ],
   "dependencies": {
-    "request": ">2",
-    "xml-mapping": ">1.2",
-    "mustache": ">0.7",
-    "Deferred": ">0.1",
-    "argparser": ">0.2",
-    "lodash": ">1.3"
+    "request": ">=2",
+    "xml-mapping": ">=1.2",
+    "mustache": "=0.7.0",
+    "Deferred": ">=0.1",
+    "argparser": ">=0.2",
+    "lodash": ">=1.3"
   },
   "analyze": false,
   "devDependencies": {

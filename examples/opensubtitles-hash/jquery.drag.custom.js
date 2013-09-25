@@ -1,7 +1,4 @@
 
-// require Long ( 64bits) representation in javascript
-goog.require('goog.math.Long');
-
 
 /*
  * Calculate OpenSubtitles hash
@@ -21,14 +18,14 @@ var OpenSubtitlesHash = function(file, onComplete){
     var sumChunk = function(arrayBuffer){
 
         var view = new DataView(arrayBuffer);
-        var hNumber = new goog.math.Long();
+        var hNumber = new dcodeIO.Long();
 
         for(var i=0; i<arrayBuffer.byteLength; i+=8){
 
             var low = view.getUint32(i, true);
             var high = view.getUint32(i+4, true);
 
-            var n = new goog.math.Long(low, high);
+            var n = new dcodeIO.Long(low, high);
             hNumber = hNumber.add(n);
         }
 
@@ -67,7 +64,7 @@ var OpenSubtitlesHash = function(file, onComplete){
         readChunk(start, file.size, function(tail){
 
             // sum all values            
-            var sum = head.add(tail).add(new goog.math.Long(file.size));
+            var sum = head.add(tail).add(new dcodeIO.Long(file.size));
             // convert to hex
             var sumHex = sum.toString(16);
 

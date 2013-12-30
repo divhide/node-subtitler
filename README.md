@@ -139,3 +139,9 @@ Checkout my blogpost on:
 <p>See other blog posts at <a href="http://blog.divhide.com">blog.divhide.com</a>.</p>
 </small>
 
+
+## Contributors
+
+** <a href="https://github.com/aetheon">Oscar Brito</a>
+** <a href="https://github.com/era">Elias Granja</a>
+

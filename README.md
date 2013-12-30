@@ -32,7 +32,11 @@ subtitler <file|directory|seachText> --lang eng|pob|... -n <numberOfSubtitlesToD
 
 > --retryIn The seconds to wait before the next retry
 
-Check the languages table on <a href="https://github.com/aetheon/node-opensubtitles-client/blob/master/langs.dump.txt">here</a>. Examples:
+Check the languages table on <a href="https://github.com/aetheon/node-opensubtitles-client/blob/master/langs.dump.txt">here</a>. 
+Or the languages aliases on <a href="https://github.com/aetheon/node-opensubtitles-client/blob/master/lib/Languages-aliases.js">here</a>. 
+
+
+Examples:
 
 ```js
 -lang por //Portuguese
@@ -142,6 +146,5 @@ Checkout my blogpost on:
 
 ## Contributors
 
-** <a href="https://github.com/aetheon">Oscar Brito</a>
-** <a href="https://github.com/era">Elias Granja</a>
+<a href="https://github.com/aetheon">Oscar Brito</a> | <a href="https://github.com/era">Elias Granja</a>
 

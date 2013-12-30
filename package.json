@@ -30,15 +30,19 @@
   "analyze": false,
   "devDependencies": {
     "node-inspector": "0.2",
-    "utest": "0.0.6",
-    "urun": "0.0.6"
+    "grunt": "*",
+    "grunt-cli": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-mocha-test": "*",
+    "expect.js": "*"
   },
   "license": "BSD",
   "engines": {
     "node": ">=0.10.12"
   },
   "scripts": {
-    "preinstall": "node scripts/pre-install.js"
+    "preinstall": "node scripts/pre-install.js",
+    "test": "grunt travis --verbose"
   },
   "bin": {
     "subtitler": "bin/subtitler.bin.js"

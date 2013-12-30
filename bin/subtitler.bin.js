@@ -239,8 +239,9 @@ APP.prototype = {
               else if(this.isDirectory) {
                   opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
               }
-              else
+              else {
                   opensubtitles.api.search(logintoken, this.lang, this.text);
+              }
 
             }).call(scope);
 

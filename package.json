@@ -29,7 +29,9 @@
   },
   "analyze": false,
   "devDependencies": {
-    "node-inspector": "0.2"
+    "node-inspector": "0.2",
+    "utest": "0.0.6",
+    "urun": "0.0.6"
   },
   "license": "BSD",
   "engines": {

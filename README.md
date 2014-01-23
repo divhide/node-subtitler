@@ -148,7 +148,7 @@ Checkout my blogpost on:
 </small>
 
 
-Thanks for all your code contributions [https://github.com/aetheon/node-opensubtitles-client/tree/master/CONTRIBUTORS.md](Contributors)!
+Thanks for all your code [contributions](CONTRIBUTORS.md)!
 
 <a href="https://github.com/aetheon">Oscar Brito</a>
 

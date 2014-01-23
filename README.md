@@ -148,7 +148,9 @@ Checkout my blogpost on:
 </small>
 
 
-## Contributors
+## [CONTRIBUTORS.md](Contributors)
 
-<a href="https://github.com/aetheon">Oscar Brito</a> | <a href="https://github.com/era">Elias Granja</a>
+----
+
+<a href="https://github.com/aetheon">Oscar Brito</a>
 

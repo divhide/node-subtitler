@@ -4,8 +4,6 @@
 
 [![Build Status](https://travis-ci.org/aetheon/node-opensubtitles-client.png?branch=master)](https://travis-ci.org/aetheon/node-opensubtitles-client)
 
-## [CONTRIBUTORS.md](Contributors)
-
 ## Install
 
 After have installed node.js, run the following:
@@ -150,5 +148,6 @@ Checkout my blogpost on:
 </small>
 
 
+Thanks for all your code contributions [CONTRIBUTORS.md](Contributors)!
 <a href="https://github.com/aetheon">Oscar Brito</a>
 

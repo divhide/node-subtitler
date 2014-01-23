@@ -82,6 +82,8 @@ Search and download to the current directory the first 5 subtitles:
 subtitler Cars -lang eng -n 5 --download
 ``` 
 
+
+
 ## Javascript API:
 
 Login - get the login token from the opensubtitle service
@@ -131,6 +133,8 @@ opensubtitles.api.on("error", functions(e){});
 opensubtitles.downloader.on("downloading", function(info){});
 opensubtitles.downloader.on("downloaded", function(info){});
 ```
+
+
 
 ## Integration with rtorrent
 

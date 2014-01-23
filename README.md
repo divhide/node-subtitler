@@ -36,19 +36,32 @@ subtitler <file|directory|seachText>
 
 > --retryIn The seconds to wait before the next retry
 
-Check the languages table on <a href="https://github.com/aetheon/node-opensubtitles-client/blob/master/langs.dump.txt">here</a>. 
-Or the languages aliases on <a href="https://github.com/aetheon/node-opensubtitles-client/blob/master/lib/Languages-aliases.js">here</a>. 
 
-
-Examples:
+### Languages
 
 ```js
--lang por //Portuguese
--lang pob //Brazilian
--lang eng //English
--lang fre //French
--lang spa //Spanish
+//Portuguese
+-lang por 
+
+//Brazilian
+-lang pob 
+
+//English
+-lang eng
+
+ //French
+-lang fre
+
+//Spanish
+-lang spa 
 ```
+
+Check the languages table on <a href="https://github.com/aetheon/node-opensubtitles-client/blob/master/langs.dump.txt">here</a>. 
+Or the languages aliases on <a href="https://github.com/aetheon/node-opensubtitles-client/blob/master/lib/LanguagesAliases.js">here</a>. 
+
+
+
+### Examples
 
 Download subtitles for a file, automatically naming the subtitle file to be the 
 same as the movie.

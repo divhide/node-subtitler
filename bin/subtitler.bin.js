@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var _ = require('lodash'),
-    opensubtitles = require("../index.js"),
+    opensubtitles = require("../Index.js"),
     fs = require("fs"),
     Utils = require('../lib/Utils');;
 

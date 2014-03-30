@@ -1,4 +1,4 @@
-var opensubtitles = require("../index.js");
+var opensubtitles = require("../Index.js");
 
 opensubtitles.api.login()
     .done(

@@ -1,13 +1,13 @@
 {
   "name": "opensubtitles-client",
   "preferGlobal": false,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Oscar Brito <aetheon@gmail.com>",
   "description": "opensubtitles API & command line subtitles downloader",
   "contributors": [
     "Oscar Brito <aetheon@gmail.com>"
   ],
-  "main": "index.js",
+  "main": "Index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/aetheon/node-opensubtitles-client.git"
@@ -16,6 +16,7 @@
     "opensubtitles",
     "client",
     "subtitle",
+    "subtitles",
     "movie",
     "rtorrent"
   ],

@@ -9,6 +9,7 @@ var MOCHA = {
         },
 
         src: [
+            '*Spec.js',
             'lib/**/*Spec.js'
         ]
 

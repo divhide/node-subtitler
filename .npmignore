@@ -1,2 +1,10 @@
 .grunt-tasks/
+bin/opensubtitle-hasher.jar
 examples/
+node_modules/
+.gitignore
+.jshintrc
+.npmignore
+.travis.yml
+gruntfile.js
+langs.dump.txt

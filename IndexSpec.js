@@ -13,7 +13,7 @@ describe('IndexSpec', function(){
   
     it('.API.login()', function(done){
 
-        var OpenSubtitles = require('./Index');
+        var OpenSubtitles = require('./Index.js');
 
         OpenSubtitles.api.login()
             .done(function(token){

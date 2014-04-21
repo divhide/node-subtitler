@@ -146,7 +146,7 @@ APP.prototype = {
 
     // Sort the subtitles by relevance (download count in the descending order)
     results.sort(function(a,b) {
-      return b.SubDownloadsCntInt - a.SubDownloadsCntInt;
+      return b.MatchingScore - a.MatchingScore;
     });
 
 
@@ -158,6 +158,7 @@ APP.prototype = {
        console.log("Subtitle\t", sub.SubFileName);
        console.log("Download Link\t", sub.SubDownloadLink);
        console.log("Downloaded\t", sub.SubDownloadsCnt);
+       console.log("Matching Score\t", sub.MatchingScore);
        
        console.log("------------------------");
     }

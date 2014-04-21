@@ -27,7 +27,8 @@
     "mustache": "=0.7.0",
     "Deferred": ">=0.1",
     "argparser": ">=0.2",
-    "lodash": ">=1.3"
+    "lodash": ">=1.3",
+    "fuzzyset.js": ">=0.0.1"
   },
   "analyze": false,
   "devDependencies": {

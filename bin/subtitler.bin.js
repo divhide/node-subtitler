@@ -144,13 +144,20 @@ APP.prototype = {
     console.log("Search results found #", results.length);
     console.log("------------------------");
 
+    // Sort the subtitles by relevance (download count in the descending order)
+    results.sort(function(a,b) {
+      return b.SubDownloadsCntInt - a.SubDownloadsCntInt;
+    });
+
+
     for(var i=0; (i<this.n && i<results.length); i++){
        var sub = results[i];
        console.log("Date\t\t", sub.SubAddDate);
        console.log("Language\t", sub.SubLanguageID, sub.LanguageName);
        console.log("Movie\t\t", sub.MovieReleaseName);
        console.log("Subtitle\t", sub.SubFileName);
-       console.log("Download\t", sub.SubDownloadLink);
+       console.log("Download Link\t", sub.SubDownloadLink);
+       console.log("Downloaded\t", sub.SubDownloadsCnt);
        
        console.log("------------------------");
     }

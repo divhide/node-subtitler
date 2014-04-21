@@ -144,9 +144,20 @@ APP.prototype = {
     console.log("Search results found #", results.length);
     console.log("------------------------");
 
-    // Sort the subtitles by relevance (download count in the descending order)
+    // Sort the subtitles by relevance (matching score of a result with the query
+    // and the download count if two items are really close)
     results.sort(function(a,b) {
-      return b.MatchingScore - a.MatchingScore;
+
+      deltaScore = b.MatchingScore - a.MatchingScore;
+
+      // If two items are really close...
+      if (Math.abs(deltaScore) < 0.005) {
+        // ...take the most popular of the two
+        return b.SubDownloadsCntInt - a.SubDownloadsCntInt;
+      } else {
+        // ... else just take the one with the highest matching score
+        return deltaScore;
+      }
     });
 
 

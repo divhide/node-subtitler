@@ -13,11 +13,13 @@ var _ = require('lodash'),
  */
 var ap = require('argparser')
             .nonvals("download")
+            .nonvals("use-filename")
             .defaults({
                lang : "eng",
                n: 1,
                retries: 3,
                retryIn: 5,
+               matchDelta: 0.05,
             })
             .err(function(e) {
                console.log(e);
@@ -39,15 +41,16 @@ APP = function(apObject){
   this.lang = ap.opt("lang");
   this.n = ap.opt("n");
   this.download = ap.opt("download");
+  this.useFilename = ap.opt("use-filename");
   this.retries = ap.opt("retries");
   this.retryIn = ap.opt("retryIn");
   this.isFile = false;
+  this.matchDelta = ap.opt("matchDelta");
   this.isDirectory = false;
 
   //If is search or file?
   var file = null;
   if( fs.existsSync(this.text) ) {
-
       var stats = fs.statSync(this.text); 
       this.download = true;
       this.isFile = true; //even if is a directory it's a file!
@@ -140,18 +143,18 @@ APP.prototype = {
   },
 
   onSearch: function(){
-
     console.log("Search results found #", results.length);
     console.log("------------------------");
+
+    var matchDelta = this.matchDelta;
 
     // Sort the subtitles by relevance (matching score of a result with the query
     // and the download count if two items are really close)
     results.sort(function(a,b) {
 
       deltaScore = b.MatchingScore - a.MatchingScore;
-
       // If two items are really close...
-      if (Math.abs(deltaScore) < 0.005) {
+      if (Math.abs(deltaScore) < matchDelta) {
         // ...take the most popular of the two
         return b.SubDownloadsCntInt - a.SubDownloadsCntInt;
       } else {
@@ -253,9 +256,9 @@ APP.prototype = {
                   console.log("Searching subtitles for file:", this.text);
               }
 
-              if(this.isFile)
+              if(!this.useFilename && this.isFile)
                   opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
-              else if(this.isDirectory) {
+              else if(!this.useFilename && this.isDirectory) {
                   opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
               }
               else {

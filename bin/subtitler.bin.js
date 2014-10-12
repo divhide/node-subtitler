@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
-var _ = require('lodash'),
+var _             = require('lodash'),
+    Q             = require('q'),
+    ua            = require('universal-analytics'),
     opensubtitles = require("../Index.js"),
-    fs = require("fs"),
-    Utils = require('../lib/Utils');;
+    fs            = require("fs"),
+    Utils         = require('../lib/Utils');;
 
 
 /*
@@ -30,7 +32,7 @@ var ap = require('argparser')
  * Application
  *
  */
-APP = function(apObject){
+var APP = function(apObject){
 
   // to be set
   this.logintoken = null;
@@ -43,12 +45,13 @@ APP = function(apObject){
   this.retryIn = ap.opt("retryIn");
   this.isFile = false;
   this.isDirectory = false;
+  this.track = ua('UA-23672935-2');
 
   //If is search or file?
   var file = null;
   if( fs.existsSync(this.text) ) {
 
-      var stats = fs.statSync(this.text); 
+      var stats = fs.statSync(this.text);
       this.download = true;
       this.isFile = true; //even if is a directory it's a file!
       this.isDirectory = stats.isDirectory();
@@ -61,7 +64,7 @@ APP = function(apObject){
 
 APP.prototype = {
 
-  
+
   bindOpensubtitlesEvents: function(){
 
       var scope = this;
@@ -74,9 +77,9 @@ APP.prototype = {
           (function(){
               this.onBeforeLogin();
           }).call(scope);
- 
+
         });
-      
+
       opensubtitles.api.on(
         "login",
         function(token){
@@ -84,7 +87,7 @@ APP.prototype = {
           (function(){
               this.onLogin(token);
           }).call(scope);
- 
+
         });
 
       opensubtitles.api.on(
@@ -94,7 +97,7 @@ APP.prototype = {
           (function(){
               this.onSearch(results);
           }).call(scope);
- 
+
         });
 
       opensubtitles.api.on(
@@ -104,7 +107,7 @@ APP.prototype = {
           (function(){
               this.onError(e);
           }).call(scope);
- 
+
         });
 
       // Event onDownloaded
@@ -115,7 +118,7 @@ APP.prototype = {
             (function(){
               this.onDownloaded(data);
             }).call(scope);
-             
+
           });
 
       // Event onDownloading
@@ -126,7 +129,7 @@ APP.prototype = {
             (function(){
               this.onDownloading(data);
             }).call(scope);
-             
+
           });
 
   },
@@ -151,7 +154,7 @@ APP.prototype = {
        console.log("Movie\t\t", sub.MovieReleaseName);
        console.log("Subtitle\t", sub.SubFileName);
        console.log("Download\t", sub.SubDownloadLink);
-       
+
        console.log("------------------------");
     }
 
@@ -159,7 +162,7 @@ APP.prototype = {
 
        // download subtitles
        opensubtitles.downloader.download(
-                        results, 
+                        results,
                         this.n,
                         this.isFile ? this.text : null,
                         function(){
@@ -174,28 +177,28 @@ APP.prototype = {
   onDownloading: function(data){
 
      console.log("...Downloading ");
-     
+
   },
 
   onDownloaded: function(data){
 
      console.log("...Downloaded ", data.url, " -> ", data.file);
      console.log("------------------------");
-     
+
   },
 
   onError: function(e){
-    
-    
+
+
     if(--this.retries<=0){
-      console.log("Oops. An error has occurred. Please try again...");  
+      console.log("Oops. An error has occurred. Please try again...");
       process.exit();
     }else{
       console.log("Oops. An error has occurred. Retrying in", this.retryIn, "seconds");
       var scope = this;
       setTimeout(
         function(){
-          
+
           (function(){
             this.run();
           }).call(scope);
@@ -207,15 +210,26 @@ APP.prototype = {
     }
 
 
-    
+
 
   },
 
+  /**
+   *
+   * Run
+   *
+   * @return {[type]} [description]
+   */
   run: function(){
+
+    this.track.pageview("/subtitler.js")
+              .event("run", "general")
+              .send();
 
     if(!this.text){
       console.log("\nSUBTITLER USAGE:\n");
       console.log("\tsubtitler", "<file|directory|query> --lang eng|pob|... -n numberOfSubtitles --download --retries <numberOfRetries> --retryIn <secondsToRetry>\n");
+      this.track.event("help", "general").send();
       return;
     }
 
@@ -224,7 +238,7 @@ APP.prototype = {
     .done(
         function(logintoken){
             (function(){
-              
+
               this.logintoken = logintoken;
 
               if(this.isDirectory) {
@@ -234,19 +248,23 @@ APP.prototype = {
                   console.log("Searching subtitles for file:", this.text);
               }
 
-              if(this.isFile)
+              if(this.isFile){
                   opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
+                  this.track.event("download", "general").send();
+              }
               else if(this.isDirectory) {
                   opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
+                  this.track.event("download", "general").send();
               }
               else {
                   opensubtitles.api.search(logintoken, this.lang, this.text);
+                  this.track.event("search", "general").send();
               }
 
             }).call(scope);
 
-            
-            
+
+
         }
     );
 

@@ -1,9 +1,9 @@
 {
   "name": "opensubtitles-client",
   "preferGlobal": false,
-  "version": "1.3.0",
+  "version": "1.4.0",
   "author": "Oscar Brito <aetheon@gmail.com>",
-  "description": "opensubtitles API & command line subtitles downloader",
+  "description": "opensubtitles client and command line subtitles downloader",
   "contributors": [
     "Oscar Brito <aetheon@gmail.com>"
   ],

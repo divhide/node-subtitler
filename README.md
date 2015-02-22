@@ -17,6 +17,56 @@ After have installed node.js, run the following:
 npm install opensubtitles-client -g
 ```
 
+## API
+
+### Login - get the login token from the opensubtitle service
+
+```js
+opensubtitles.api.login()
+	.done(function(token){
+		// got the auth token
+	});
+```
+
+### Search - search for subtitles
+
+```js
+opensubtitles.api.search(token, lang, text)
+	.done(
+		functions(results){
+			//got the search results
+		}
+	);
+```
+
+### Search - search subtitles for a movie file
+
+```js
+opensubtitles.api.searchForFile(login, lang, movieFilePath);
+	.done(
+		functions(results){
+			//got the search results
+		}
+	);
+```
+
+### Logout - opensubtitles session logout ( please be nice! )
+
+```js
+opensubtitles.api.logout(login);
+```
+
+### Events
+
+```js
+opensubtitles.api.on("login", functions(token){});
+opensubtitles.api.on("search", functions(results){});
+opensubtitles.api.on("error", functions(e){});
+
+opensubtitles.downloader.on("downloading", function(info){});
+opensubtitles.downloader.on("downloaded", function(info){});
+```
+
 ## Command line
 
 ```shell
@@ -86,60 +136,6 @@ Search and download to the current directory the first 5 subtitles:
 ```shell
 subtitler Cars -lang eng -n 5 --download
 ```
-
-
-
-## Javascript API:
-
-Login - get the login token from the opensubtitle service
-
-```js
-opensubtitles.api.login()
-	.done(function(token){
-		// got the auth token
-	});
-```
-
-Search - search for subtitles
-
-```js
-opensubtitles.api.search(token, lang, text)
-	.done(
-		functions(results){
-			//got the search results
-		}
-	);
-```
-
-Search - search subtitles for a movie file
-
-```js
-opensubtitles.api.searchForFile(login, lang, movieFilePath);
-	.done(
-		functions(results){
-			//got the search results
-		}
-	);
-```
-
-Logout - opensubtitles session logout ( please be nice! )
-
-```js
-opensubtitles.api.logout(login);
-```
-
-Events
-
-```js
-opensubtitles.api.on("login", functions(token){});
-opensubtitles.api.on("search", functions(results){});
-opensubtitles.api.on("error", functions(e){});
-
-opensubtitles.downloader.on("downloading", function(info){});
-opensubtitles.downloader.on("downloaded", function(info){});
-```
-
-
 
 ## Contribute
 

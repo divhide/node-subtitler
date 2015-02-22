@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    
+
     'jshint':       require("./.grunt-tasks/jshint.js"),
     'mochaTest':    require("./.grunt-tasks/mocha.js")
 
@@ -14,16 +14,16 @@ module.exports = function(grunt) {
   /*
    * Build tasks:
    *
-   */  
-  
+   */
+
   grunt.registerTask(
-    'default', 
+    'default',
     [
-      'travis'
+      'dev'
     ]);
 
   grunt.registerTask(
-    'travis', 
+    'dev',
     [
       'jshint',
       'mochaTest'

@@ -141,36 +141,21 @@ opensubtitles.downloader.on("downloaded", function(info){});
 
 
 
-## Integration with rtorrent
+## Contribute
 
-After rtorrent download is finish you can automatically use subtitler to download it's subtitles. You just have to
-do the following:
+Pull requests are welcome but please make sure the the linting and unit tests are working before you
+do that. Also adding unit tests will increase the acceptance of the pull request by 10000%!
 
-On .rtorrent.rc add:
+``` bash
+
+grunt dev
 
 ```
-system.method.set_key =event.download.finished,move_complete,"execute=subtitler,$d.get_base_path="
-```
-
-This way the _subtitler_ command will receive the downloaded path has argument and will try to download the subtitles.
 
 
+## Authors
 
+**Oscar Brito**
 
-Checkout my blogpost on:
-
-<a href="http://blog.divhide.com/2013/07/is-downloading-subtitles-painfull.html">Why this package was created!</a>
-
-<a href="http://blog.divhide.com/2013/07/opensubtitles-client-nodejs-javascript.html">Integration with Rtorrent</a>
-
-<small>
-<p>Visit <a href="http://site.divhide.com">www.divhide.com</a> for more informations, contacts and news about Web Development.</p>
-
-<p>See other blog posts at <a href="http://blog.divhide.com">blog.divhide.com</a>.</p>
-</small>
-
-
-Thanks for all your code [contributions](CONTRIBUTORS.md)!
-
-<a href="https://github.com/aetheon">Oscar Brito</a>
-
++ [github/aetheon](https://github.com/aetheon)
++ [twitter/aetheon](http://twitter.com/aetheon)

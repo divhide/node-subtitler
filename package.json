@@ -44,7 +44,7 @@
     "node": ">=0.10.12"
   },
   "scripts": {
-    "test": "grunt travis --verbose"
+    "test": "grunt dev --verbose"
   },
   "bin": {
     "subtitler": "bin/subtitler.bin.js"

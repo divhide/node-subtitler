@@ -142,7 +142,7 @@ APP.prototype = {
     console.log("opensubtitles API Login with token", token);
   },
 
-  onSearch: function(){
+  onSearch: function(results){
 
     console.log("Search results found #", results.length);
     console.log("------------------------");

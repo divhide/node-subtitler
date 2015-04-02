@@ -17,7 +17,7 @@ var ap = require('argparser')
 .nonvals("download")
 .defaults({
    lang : "eng",
-   n: 5,
+   n: 0,
    retries: 3,
    retryIn: 5,
 })
@@ -137,7 +137,15 @@ APP.prototype = {
     console.log("Search results found #", results.length);
     console.log("------------------------");
 
-    for(var i=0; (i<this.n && i<results.length); i++){
+    var max = this.n;
+    if( this.download ) {
+      max = max || 1;
+    }
+    else{
+      max = max || 5;
+    }
+
+    for(var i=0; (i<max && i<results.length); i++){
        var sub = results[i];
        console.log("Date\t\t", sub.SubAddDate);
        console.log("Language\t", sub.SubLanguageID, sub.LanguageName);
@@ -153,7 +161,7 @@ APP.prototype = {
        // download subtitles
        return opensubtitles.downloader.download(
             results,
-            this.n,
+            max,
             this.isFile ? this.text : null,
             function(){
               opensubtitles.api.logout(this.logintoken);
@@ -238,11 +246,17 @@ APP.prototype = {
           }
 
           if(this.isFile){
-              opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
+              opensubtitles.api.searchForFile(logintoken, this.lang, this.text)
+              .then(function(results){
+                scope.onSearch.call(scope, results);
+              });
               this.track.event("download", "general").send();
           }
           else if(this.isDirectory) {
-              opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
+              opensubtitles.api.searchForFile(logintoken, this.lang, this.text)
+              .then(function(results){
+                scope.onSearch.call(scope, results);
+              });
               this.track.event("download", "general").send();
           }
           else {

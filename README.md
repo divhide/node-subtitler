@@ -28,43 +28,45 @@ opensubtitles.api.login()
 	});
 ```
 
-### Search - search for subtitles
+### Search
 
 ```js
-opensubtitles.api.search(token, lang, text)
-	.done(
-		functions(results){
-			//got the search results
-		}
-	);
+
+opensubtitles.api.searchForFile(login, lang, movieFilePath);
+.then(functions(results){
+	//got the search results
+});
+
+opensubtitles.api.searchForTitle(token, lang, text)
+.then(functions(results){
+	//got the search results
+});
+
+opensubtitles.api.searchForTag(token, lang, tag)
+.then(functions(results){
+	//got the search results
+});
+
+opensubtitles.api.search(token, lang, {
+	query: "",
+	tag: ""
+})
+.then(functions(results){
+	//got the search results
+});
+
 ```
 
 ### Search - search subtitles for a movie file
 
 ```js
-opensubtitles.api.searchForFile(login, lang, movieFilePath);
-	.done(
-		functions(results){
-			//got the search results
-		}
-	);
+
 ```
 
 ### Logout - opensubtitles session logout ( please be nice! )
 
 ```js
 opensubtitles.api.logout(login);
-```
-
-### Events
-
-```js
-opensubtitles.api.on("login", functions(token){});
-opensubtitles.api.on("search", functions(results){});
-opensubtitles.api.on("error", functions(e){});
-
-opensubtitles.downloader.on("downloading", function(info){});
-opensubtitles.downloader.on("downloaded", function(info){});
 ```
 
 ## Command line

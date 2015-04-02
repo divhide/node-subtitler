@@ -14,18 +14,18 @@ var _             = require('lodash'),
  * --lang <str> -n <int> --retries <int> --retryIn <sec> --download
  */
 var ap = require('argparser')
-            .nonvals("download")
-            .defaults({
-               lang : "eng",
-               n: 1,
-               retries: 3,
-               retryIn: 5,
-            })
-            .err(function(e) {
-               console.log(e);
-               process.exit(0);
-             })
-            .parse();
+.nonvals("download")
+.defaults({
+   lang : "eng",
+   n: 5,
+   retries: 3,
+   retryIn: 5,
+})
+.err(function(e) {
+   console.log(e);
+   process.exit(0);
+ })
+.parse();
 
 
 /*
@@ -91,16 +91,6 @@ APP.prototype = {
         });
 
       opensubtitles.api.on(
-        "search",
-        function(results){
-
-          (function(){
-              this.onSearch(results);
-          }).call(scope);
-
-        });
-
-      opensubtitles.api.on(
         "error",
         function(e){
 
@@ -161,15 +151,15 @@ APP.prototype = {
     if( this.download ) {
 
        // download subtitles
-       opensubtitles.downloader.download(
-                        results,
-                        this.n,
-                        this.isFile ? this.text : null,
-                        function(){
-                          opensubtitles.api.logout(this.logintoken);
-                          process.exit();
-                        }
-                    );
+       return opensubtitles.downloader.download(
+            results,
+            this.n,
+            this.isFile ? this.text : null,
+            function(){
+              opensubtitles.api.logout(this.logintoken);
+              process.exit();
+            }
+        );
     }
 
   },
@@ -235,38 +225,38 @@ APP.prototype = {
 
     var scope = this;
     opensubtitles.api.login()
-    .done(
-        function(logintoken){
-            (function(){
+    .then(function(logintoken){
+        (function(){
 
-              this.logintoken = logintoken;
+          this.logintoken = logintoken;
 
-              if(this.isDirectory) {
-                  // get the biggest file in the directory (might be the movie file)
-                  this.text = Utils.getBiggestFile(this.text);
+          if(this.isDirectory) {
+              // get the biggest file in the directory (might be the movie file)
+              this.text = Utils.getBiggestFile(this.text);
 
-                  console.log("Searching subtitles for file:", this.text);
-              }
+              console.log("Searching subtitles for file:", this.text);
+          }
 
-              if(this.isFile){
-                  opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
-                  this.track.event("download", "general").send();
-              }
-              else if(this.isDirectory) {
-                  opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
-                  this.track.event("download", "general").send();
-              }
-              else {
-                  opensubtitles.api.search(logintoken, this.lang, this.text);
-                  this.track.event("search", "general").send();
-              }
+          if(this.isFile){
+              opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
+              this.track.event("download", "general").send();
+          }
+          else if(this.isDirectory) {
+              opensubtitles.api.searchForFile(logintoken, this.lang, this.text);
+              this.track.event("download", "general").send();
+          }
+          else {
+              opensubtitles.api.searchForTitle(logintoken, this.lang, this.text)
+              .then(function(results){
+                scope.onSearch.call(scope, results);
+              });
 
-            }).call(scope);
+              this.track.event("search", "general").send();
+          }
 
+        }).call(scope);
 
-
-        }
-    );
+    });
 
   }
 

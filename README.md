@@ -57,12 +57,6 @@ opensubtitles.api.search(token, lang, {
 
 ```
 
-### Search - search subtitles for a movie file
-
-```js
-
-```
-
 ### Logout - opensubtitles session logout ( please be nice! )
 
 ```js

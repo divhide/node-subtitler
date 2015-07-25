@@ -1,9 +1,9 @@
 {
   "name": "subtitler",
   "preferGlobal": false,
-  "version": "2.3.0",
+  "version": "2.4.0",
   "author": "Oscar Brito <aetheon@gmail.com>",
-  "description": "subtitles client and command line subtitles downloader",
+  "description": "Command line and library to search and download subtitles.",
   "contributors": [
     "Oscar Brito <aetheon@gmail.com>"
   ],
@@ -19,6 +19,9 @@
     "movies",
     "movie",
     "client",
+    "search",
+    "find",
+    "download",
     "command",
     "library",
     "rtorrent",

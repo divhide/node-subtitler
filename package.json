@@ -1,7 +1,7 @@
 {
   "name": "subtitler",
   "preferGlobal": false,
-  "version": "2.2.0",
+  "version": "2.3.0",
   "author": "Oscar Brito <aetheon@gmail.com>",
   "description": "subtitles client and command line subtitles downloader",
   "contributors": [

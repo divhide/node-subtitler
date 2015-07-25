@@ -22,6 +22,9 @@ npm install subtitler -g
 ### Login - get the login token from the opensubtitle service
 
 ```js
+
+var opensubtitles = require("subtitler");
+
 opensubtitles.api.login()
 .then(function(token){
 	// got the auth token
@@ -31,6 +34,8 @@ opensubtitles.api.login()
 ### Search
 
 ```js
+
+var opensubtitles = require("subtitler");
 
 opensubtitles.api.searchForFile(login, lang, movieFilePath);
 .then(functions(results){
@@ -60,7 +65,11 @@ opensubtitles.api.search(token, lang, {
 ### Logout - opensubtitles session logout ( please be nice! )
 
 ```js
+
+var opensubtitles = require("subtitler");
+
 opensubtitles.api.logout(login);
+
 ```
 
 ## Command line

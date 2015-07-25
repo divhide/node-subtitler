@@ -2,14 +2,14 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
 
-    'jshint':       require("./.grunt-tasks/jshint.js"),
-    'mochaTest':    require("./.grunt-tasks/mocha.js")
+    'jshint'    : require("./.grunt-tasks/jshint.js"),
+    'mochaTest' : require("./.grunt-tasks/mocha.js"),
+    'bump'      : require("./.grunt-tasks/bump")
 
   });
 
-  // load libs
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks("grunt-mocha-test");
+  /// load tasks
+  require('load-grunt-tasks')(grunt);
 
   /*
    * Build tasks:

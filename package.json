@@ -1,24 +1,28 @@
 {
-  "name": "opensubtitles-client",
+  "name": "subtitler",
   "preferGlobal": false,
   "version": "2.2.0",
   "author": "Oscar Brito <aetheon@gmail.com>",
-  "description": "opensubtitles client and command line subtitles downloader",
+  "description": "subtitles client and command line subtitles downloader",
   "contributors": [
     "Oscar Brito <aetheon@gmail.com>"
   ],
   "main": "Index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aetheon/node-opensubtitles-client.git"
+    "url": "https://github.com/divhide/node-subtitler.git"
   },
   "keywords": [
-    "opensubtitles",
-    "client",
     "subtitle",
     "subtitles",
+    "opensubtitles",
+    "movies",
     "movie",
-    "rtorrent"
+    "client",
+    "command",
+    "library",
+    "rtorrent",
+    "torrent"
   ],
   "dependencies": {
     "request": "2",

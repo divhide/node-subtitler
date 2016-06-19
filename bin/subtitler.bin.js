@@ -16,7 +16,7 @@ var _             = require('lodash'),
 var ap = require('argparser')
 .nonvals("download")
 .defaults({
-   lang : "eng",
+   lang : process.env.LANG || "eng",
    n: 0,
    retries: 3,
    retryIn: 5,

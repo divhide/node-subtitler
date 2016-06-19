@@ -3,7 +3,7 @@
 
 # Subtitles library / command line
 
- [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=NYVPSL7GBYD6A&lc=US&item_name=Oscar%20Brito&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CJCQT6QZCF8NA)
 [![Build Status](https://travis-ci.org/divhide/node-subtitler.png?branch=master)](https://travis-ci.org/divhide/node-subtitler/)
 [![NPM version](https://badge.fury.io/js/subtitler.svg)](http://badge.fury.io/js/subtitler)
 
@@ -86,7 +86,7 @@ subtitler <file|directory|seachText>
 
 > if free text  is provided -- performs a query into opensubtitles with it!
 
-> --lang The language to search ( be sure to check <a href="https://github.com/divhide/node-subtitler/blob/master/langs.dump.txt">here</a> )
+> --lang The language to search. Defaults to `LANG` environment variable.
 
 > -n specifies the number of subtitles to list or download if (--download is specified)
 
@@ -119,15 +119,14 @@ subtitler <file|directory|seachText>
 Check the languages table on <a href="https://github.com/divhide/node-subtitler/blob/master/langs.dump.txt">here</a>.
 Or the languages aliases on <a href="https://github.com/divhide/node-subtitler/blob/master/lib/LanguagesAliases.js">here</a>.
 
-
-
 ### Examples
 
 Download subtitles for a file, automatically naming the subtitle file to be the
 same as the movie.
 
 ```shell
-subtitler Cars.avi -lang eng
+subtitler Cars.avi -lang en_us
+LANG=en_us subtitler Cars.avi
 ```
 
 Search for subtitles (limit 5):

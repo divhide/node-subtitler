@@ -101,19 +101,19 @@ subtitler <file|directory|seachText>
 
 ```js
 //Portuguese
--lang por
+--lang por
 
 //Brazilian
--lang pob
+--lang pob
 
 //English
--lang eng
+--lang eng
 
  //French
--lang fre
+--lang fre
 
 //Spanish
--lang spa
+--lang spa
 ```
 
 Check the languages table on <a href="https://github.com/divhide/node-subtitler/blob/master/langs.dump.txt">here</a>.
@@ -125,20 +125,20 @@ Download subtitles for a file, automatically naming the subtitle file to be the
 same as the movie.
 
 ```shell
-subtitler Cars.avi -lang en_us
+subtitler Cars.avi --lang en_us
 LANG=en_us subtitler Cars.avi
 ```
 
 Search for subtitles (limit 5):
 
 ```shell
-subtitler Cars -lang eng --n 5
+subtitler Cars --lang eng --n 5
 ```
 
 Search and download to the current directory the first 5 subtitles:
 
 ```shell
-subtitler Cars -lang eng -n 5 --download
+subtitler Cars --lang eng -n 5 --download
 ```
 
 ## Contribute

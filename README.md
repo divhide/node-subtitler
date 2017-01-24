@@ -4,7 +4,7 @@
 # Subtitles library / command line
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CJCQT6QZCF8NA)
-[![Build Status](https://travis-ci.org/divhide/node-subtitler.png?branch=master)](https://travis-ci.org/divhide/node-subtitler/)
+[![Build Status](https://travis-ci.org/divhide/node-subtitler.svg?branch=master)](https://travis-ci.org/divhide/node-subtitler/)
 [![NPM version](https://badge.fury.io/js/subtitler.svg)](http://badge.fury.io/js/subtitler)
 
 ---

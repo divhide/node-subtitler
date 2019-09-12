@@ -11,7 +11,7 @@
 
 ## Install
 
-After have installed node.js, run the following:
+After you have installed node.js, run the following:
 
 ```shell
 npm install subtitler -g
@@ -27,7 +27,7 @@ var opensubtitles = require("subtitler");
 
 opensubtitles.api.login()
 .then(function(token){
-	// got the auth token
+	// get the auth token
 });
 ```
 
@@ -39,17 +39,17 @@ var opensubtitles = require("subtitler");
 
 opensubtitles.api.searchForFile(login, lang, movieFilePath);
 .then(functions(results){
-	//got the search results
+	//get the search results
 });
 
 opensubtitles.api.searchForTitle(token, lang, text)
 .then(functions(results){
-	//got the search results
+	//get the search results
 });
 
 opensubtitles.api.searchForTag(token, lang, tag)
 .then(functions(results){
-	//got the search results
+	//get the search results
 });
 
 opensubtitles.api.search(token, lang, {
@@ -57,7 +57,7 @@ opensubtitles.api.search(token, lang, {
 	tag: ""
 })
 .then(functions(results){
-	//got the search results
+	//get the search results
 });
 
 ```
@@ -84,13 +84,13 @@ subtitler <file|directory|seachText>
 ```
 > if a file or directory is provided -- download is activated by default
 
-> if free text  is provided -- performs a query into opensubtitles with it!
+> if free text is provided -- performs a query into opensubtitles with it!
 
 > --lang The language to search. Defaults to `LANG` environment variable.
 
 > -n specifies the number of subtitles to list or download if (--download is specified)
 
-> --download Flag to download the results. The downloaded result will have the same same as the file if it can, working well with TV players, etc...
+> --download Flag to download the results. The downloaded result will have the same name as the file if it can, working well with TV players, etc...
 
 > --retries The number of retries in API error
 
@@ -109,7 +109,7 @@ subtitler <file|directory|seachText>
 //English
 --lang eng
 
- //French
+//French
 --lang fre
 
 //Spanish
@@ -143,7 +143,7 @@ subtitler Cars --lang eng -n 5 --download
 
 ## Contribute
 
-Pull requests are welcome but please make sure the the linting and unit tests are working before you
+Pull requests are welcome but please make sure the linting and unit tests are working before you
 do that. Also adding unit tests will increase the acceptance of the pull request by 10000%!
 
 ``` bash

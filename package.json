@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "argparser": "0.2",
-    "lodash": "3.6.0",
+    "lodash": "4.17.21",
     "mustache": "2.2.1",
     "q": "1.2.0",
     "request": "^2.88.0",

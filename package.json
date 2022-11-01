@@ -44,8 +44,8 @@
     "grunt-cli": "*",
     "grunt-contrib-jshint": "*",
     "grunt-mocha-test": "*",
-    "load-grunt-tasks": "3.0.0",
-    "mocha": "^2.5.3",
+    "load-grunt-tasks": "3.5.2",
+    "mocha": "^10.1.0",
     "node-inspector": "0.12"
   },
   "license": "MIT",
